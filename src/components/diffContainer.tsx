@@ -5,7 +5,7 @@ type DiffContainerProps = {
 }
 export default function DiffContainer({children}:DiffContainerProps) {
     return (
-        <div className="mt-10 h-[18rem] w-[80rem] bg-itemsBackgroud rounded-md border-2 border-borderItems ">
+        <div className="mt-10 h-[18rem] w-[80rem] bg-itemsBackgroud rounded-md border-2 border-borderItems flex justify-center">
             {children}
         </div>
     );
