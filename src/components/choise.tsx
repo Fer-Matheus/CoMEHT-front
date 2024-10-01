@@ -24,9 +24,9 @@ function MoreInfo({description}:MoreInfoProps) {
     return (
         <Dialog>
             <DialogTrigger>
-                <button className="transition transform hover:scale-125 focus:outline-none">
+                <div className="transition transform hover:scale-125 focus:outline-none">
                     <CircleHelp size={34} className="text-textColor" />
-                </button>
+                </div>
             </DialogTrigger>
             <DialogContent className="bg-itemsBackgroud border-2 border-borderItems">
                 <DialogHeader>
@@ -46,7 +46,7 @@ type ChoiseProps = {
 }
 export default function Choise({aspect, description}:ChoiseProps) {
     return (
-        <>
+        <div>
             <div className="mt-5 w-[40rem] h-[5rem] flex">
                 <div className="w-1/2 h-[5rem] flex items-end justify-end">
                     <p className="text-2xl text-textColor">
@@ -64,6 +64,6 @@ export default function Choise({aspect, description}:ChoiseProps) {
                 <ChoiseButton s={"A"}/>
                 <ChoiseButton s={"B"}/>
             </div>
-        </>
+        </div>
     );
 }
