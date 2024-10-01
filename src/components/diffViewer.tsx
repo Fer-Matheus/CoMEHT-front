@@ -1,50 +1,42 @@
-import React from 'react';
-import { parsePatch } from 'diff';
+
+import React, { Key, useState } from 'react';
+import { ParsedDiff } from 'diff';
+import { ContentDiffView } from './contentDiffView';
 
 type DiffViewerProps = {
-    rawDiff: string
+    diffs: ParsedDiff[]
 }
-export default function DiffViewer({ rawDiff }: DiffViewerProps) {
+export function DiffViewer({ diffs }: DiffViewerProps) {
 
-    const diff = parsePatch(rawDiff)[0];
+    const [currentDiff, setCurrentDiff] = useState<ParsedDiff>(diffs[0])
+    const [currentKey, setCurrentKey] = useState<Key>(0)
 
-    function createView(newCode: boolean) {
+    const handleClick = (diff: ParsedDiff) => {
+        setCurrentDiff(diff)
+        if (currentKey == 0) setCurrentKey(1);
+        else setCurrentKey(0);
+        
+    }
 
+    function createFileList(diff: ParsedDiff, index: Number) {
         return (
-            <div className='w-1/2 h-full'>
-                <h1 className='text-2xl ml-4'>
-                    {newCode ? 'Novo' : 'Antigo'}
-                </h1>
-                <pre className="whitespace-pre-wrap">
-                    {diff.hunks.map((hunk, hunkIndex) => (
-                        <div key={hunkIndex}>
-                            {hunk.lines.map((line, lineIndex) => {
-                                const lineNumber = hunk.newStart + lineIndex;
-                                if (newCode ? line.startsWith('-') : line.startsWith('+')) {
-                                    // Ignore removed lines
-                                    return null;
-                                }
-                                return (
-                                    <div
-                                        key={lineIndex}
-                                        className={`flex space-x-4 ${newCode ? 'text-green-500' : ''
-                                            }`}>
-                                        <span className="text-gray-500 w-10 text-right">{lineNumber}</span>
-                                        <span>{line}</span>
-                                    </div>
-                                );
-                            })}
-                        </div>
-                    ))}
-                </pre>
+            <div>
+                <button className='w-[20px] h-[5px]' onClick={() => handleClick(diff)}>
+                    {index.toString()}
+                </button>
             </div>
         );
     }
 
     return (
-        <div className='flex'>
-            {createView(false)}
-            {createView(true)}
+        <div className='w-full h-full flex'>
+            <div className='w-[5rem]'>
+                <p>Arquivos</p>
+                <div>
+                    {diffs.map((diff, index) => createFileList(diff, index))}
+                </div>
+            </div>
+            <ContentDiffView diff={currentDiff} key={currentKey}/>
         </div>
     );
-};
+}
