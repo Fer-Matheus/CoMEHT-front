@@ -1,12 +1,19 @@
+"use client"
 import Choise from "@/components/choise";
 import CommitMessage from "@/components/commitMessage";
 import DiffContainer from "@/components/diffContainer";
+import DiffViewer from "@/components/diffViewer";
 import NavBar from "@/components/navbar";
 import { Base } from "@/components/page/base";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { aspects, Aspects } from "@/models/aspect";
+import { ParsedDiff, parsePatch } from "diff";
+import { useEffect, useState } from "react";
+
+const rawDiff = `: "diff --git a/CHANGELOG.md b/CHANGELOG.md\nindex f0762d2a7..b7a7f412a 100644\n--- a/CHANGELOG.md\n+++ b/CHANGELOG.md\n@@ -1,4 +1,5 @@\n ## 0.9.3-rc2\n+ * STORM-558: change \"swap!\" to \"reset!\" to fix assignment-versions in supervisor\n  * STORM-555: Storm json response should set charset to UTF-8\n  * STORM-513: check heartbeat from multilang subprocess\n  * STORM-549: \"topology.enable.message.timeouts\" does nothing",`
 
 export default function Home() {
+
   const createCarouselItem = (aspect: Aspects) => {
     return (
       <CarouselItem className="pl-[320px] ">
@@ -17,13 +24,9 @@ export default function Home() {
   return (
     <div>
       <Base>
-
         <NavBar link="github.com/Fer-Matheus" />
-
-        <DiffContainer>
-          <div>
-
-          </div>
+        <DiffContainer >
+          <DiffViewer rawDiff={rawDiff}/>
         </DiffContainer>
 
         <div className="mt-2 w-[80rem] h-[12rem] flex items-center ">
@@ -40,8 +43,8 @@ export default function Home() {
             <CarouselContent className="mt-2 w-[80rem] h-[12rem] basis-3">
               {aspects.map(createCarouselItem)}
             </CarouselContent>
-            <CarouselPrevious/>
-            <CarouselNext/>
+            <CarouselPrevious />
+            <CarouselNext />
           </Carousel>
         </div>
 
