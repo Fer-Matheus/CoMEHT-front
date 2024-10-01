@@ -5,9 +5,10 @@ import { CircleHelp } from "lucide-react";
 type ChoiseButtonProps = {
     s: string
 }
-function ChoiseButton({s}:ChoiseButtonProps) {
+
+function ChoiseButton({ s }: ChoiseButtonProps) {
     return (
-        <div className="w-[70%] m-3 ml-4  flex items-center justify-center text-textColor text-xl">
+        <div className="w-[15em] h-[3rem] flex text-textColor text-xl">
             <button className="flex items-center justify-center w-[80%] h-full rounded-md border-2 border-borderItems bg-itemsBackgroud transition-transform hover:scale-110 focus:outline-none">
                 <p className="text-2xl mr-5">
                     {s} is more
@@ -20,7 +21,7 @@ function ChoiseButton({s}:ChoiseButtonProps) {
 type MoreInfoProps = {
     description: string
 }
-function MoreInfo({description}:MoreInfoProps) {
+function MoreInfo({ description }: MoreInfoProps) {
     return (
         <Dialog>
             <DialogTrigger>
@@ -44,25 +45,31 @@ type ChoiseProps = {
     aspect: string,
     description: string
 }
-export default function Choise({aspect, description}:ChoiseProps) {
+export default function Choise({ aspect, description }: ChoiseProps) {
     return (
-        <div>
-            <div className="mt-5 w-[40rem] h-[5rem] flex">
-                <div className="w-1/2 h-[5rem] flex items-end justify-end">
-                    <p className="text-2xl text-textColor">
-                        Choose the message that most looks like:
+        <div className="w-full flex flex-col items-center">
+            <div className="mt-5 w-[40rem] h-[5rem] flex items-center justify-center">
+                <div className="w-1/2 h-[5rem] flex items-center justify-start">
+                    <p className="text-auto text-textColor">
+                    Choose the message that most looks like:
                     </p>
                 </div>
                 <div className="w-1/2 h-[5rem] flex">
-                    <div className="w-[70%] m-3 ml-[2.7rem] rounded-md flex items-center justify-center text-textColor text-xl border-2 border-borderItems bg-itemsBackgroud">
+                    <div className="w-[70%] m-3 ml-[1rem] rounded-md flex items-center justify-center text-white text-xl border-2 border-borderItems bg-[#3A506B]">
                         {aspect}
-                    </div>  
-                    <MoreInfo description={description}/>
+                    </div>
+                    <MoreInfo description={description} />
                 </div>
             </div>
-            <div className="mt-5 w-[40rem] h-[5rem] flex">
-                <ChoiseButton s={"A"}/>
-                <ChoiseButton s={"B"}/>
+            <div className="w-full flex items-center justify-center">
+                <div className="mt-5 w-[40rem] h-[5rem] flex justify-between">
+                    <div className="ml-[4rem]">
+                        <ChoiseButton s={"A"} />
+                    </div>
+                    <div className="-ml-[55px] ">
+                        <ChoiseButton s={"B"} />
+                    </div>
+                </div>
             </div>
         </div>
     );
