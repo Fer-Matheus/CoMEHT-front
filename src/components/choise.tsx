@@ -9,7 +9,7 @@ type ChoiseButtonProps = {
 function ChoiseButton({ s }: ChoiseButtonProps) {
     return (
         <div className="w-[15em] h-[3rem] flex text-textColor text-xl">
-            <button className="flex items-center justify-center w-[80%] h-full rounded-md border-2 border-borderItems bg-itemsBackgroud transition-transform hover:scale-110 focus:outline-none">
+            <button className="flex items-center justify-center w-[80%] h-full rounded-md border-2 border-borderItems bg-itemsBackgroud transition-transform hover:scale-110 focus:outline-none aria-pressed:after:bg-white">
                 <p className="text-2xl mr-5">
                     {s} is more
                 </p>
@@ -21,7 +21,7 @@ function ChoiseButton({ s }: ChoiseButtonProps) {
 type MoreInfoProps = {
     description: string
 }
-function MoreInfo({ description }: MoreInfoProps) {
+export function MoreInfo({ description }: MoreInfoProps) {
     return (
         <Dialog>
             <DialogTrigger>

@@ -16,10 +16,11 @@ export function DiffViewer({ diffs }: DiffViewerProps) {
 
     function createFileList(diff: ParsedDiff, index: Number) {
         const selectedBg = diff === currentDiff ? "bg-orange-500" : "bg-[#3A506B]";
+        const fileName = diff.newFileName ? diff.newFileName : diff.oldFileName;
         return (
             <div>
-                <button className={`w-[6rem] h-[2rem] ml-2 mt-2 ${selectedBg} rounded-md transition-transform hover:translate-x-2`} onClick={() => setCurrentDiff(diff)}>
-                    {index.toString()}
+                <button className={`w-auto h-[2rem] ml-2 mt-2 ${selectedBg} rounded-md transition-transform hover:translate-x-2`} onClick={() => setCurrentDiff(diff)}>
+                    {fileName}
                 </button>
             </div>
         );
@@ -27,7 +28,7 @@ export function DiffViewer({ diffs }: DiffViewerProps) {
 
     return (
         <div className='w-full h-full flex'>
-            <div className='w-[6rem]'>
+            <div className='w-auto'>
                 <p className='ml-2 mt-2'>Files</p>
                 <div className='flex flex-col items-center justify-center'>
                     {diffs.map((diff, index) => createFileList(diff, index))}
