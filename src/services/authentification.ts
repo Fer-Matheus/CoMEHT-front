@@ -9,8 +9,13 @@ type LoginResponse = {
     token: String
 };
 
-export async function Login(params: LoginRequest){
+export async function LoginUser(params: LoginRequest){
     const response = await api.post<LoginResponse>("/login", params)
     return response.data.token
+}
+
+export async function Register(params: LoginRequest){
+    const response = await api.post("/register", params)
+    return response.status
 }
 

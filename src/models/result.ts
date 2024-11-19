@@ -1,10 +1,10 @@
-type Options = {
+export type Options = {
     aspect:       String 
-	chosenOption: String 
-	choiseTime:   String 
+	chosen_option: String 
+	choise_time:   Number 
 };
 
 export type Result = {
-    duelId: Number
+    duel_id: Number
     options: Options[]
 };
