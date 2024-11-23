@@ -113,7 +113,7 @@ export default function Home() {
         <div className="mt-5 w-[40rem] h-[5rem] flex items-center justify-center">
           <div className="w-1/2 h-[5rem] flex items-center justify-start">
             <p className="text-auto text-textColor">
-              Choose the message that most looks like:
+              Which of the two messages do you think best fits with the aspect next to it?:
             </p>
           </div>
           <div className="w-1/2 h-[5rem] flex">
