@@ -7,5 +7,5 @@ export const aspects: Aspects[] = [
     {title: "Comprehensiveness", description: "Which reflects whether the message describes a summary of what has been changed (What information) and also covers relevant important details (i.e. whether the message fails to explain the code changes)."},
     {title: "Conciseness", description: "Indicates whether the message conveys information succinctly, ensuring readability and quick comprehension."},
     {title:"Expressiveness", description:"Which reflects whether the message content is grammatically correct."},
-    {title:"Your final choise", description:"Your final choise is what your will use."}
+    {title:"Your final choice", description:"Your final choice is what your will use."}
   ]

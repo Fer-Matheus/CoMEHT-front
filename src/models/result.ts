@@ -1,7 +1,7 @@
 export type Options = {
     aspect:       String 
 	chosen_option: String 
-	choise_time:   Number 
+	choice_time:   Number 
 };
 
 export type Result = {
