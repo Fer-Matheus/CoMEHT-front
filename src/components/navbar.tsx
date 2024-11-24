@@ -1,4 +1,4 @@
-import { Github } from "lucide-react";
+import { GitGraph, Github } from "lucide-react";
 
 type NavBarProps = {
     link: string
@@ -6,7 +6,10 @@ type NavBarProps = {
 export default function NavBar({link}:NavBarProps){
     return (
         <div className="bg-itemsBackgroud w-full h-[4rem] flex items-center justify-between">
-          <h1 className="text-3xl ml-20 text-textColor">CommiTinder</h1>
+          <div className="flex text-textColor justify-center w-[20rem]">
+          <h1 className="text-3xl ml-20">CommiTinder</h1>
+          <GitGraph size={35}/>
+          </div>
           <a className="pr-10 pt-3" href={link}>
             <Github className="h-[3rem] w-[3rem] text-textColor" size={40} />
           </a>

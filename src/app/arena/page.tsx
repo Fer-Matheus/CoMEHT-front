@@ -1,18 +1,21 @@
-'use client'
+"use client"
 import OkayHand from "@/assets/ok";
 import { MoreInfo } from "@/components/choice";
 import CommitMessage from "@/components/commitMessage";
 import DiffContainer from "@/components/diffContainer";
 import { DiffViewer } from "@/components/diffViewer";
 import NavBar from "@/components/navbar";
+import { ShowOptions } from "@/components/options";
 import { Base } from "@/components/page/base";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { aspects, Aspects } from "@/models/aspect";
 import { Options } from "@/models/result";
-import { GetDuel } from "@/services/duel";
+import { GetDuel, SendResults } from "@/services/duel";
+import { deleteCookie } from "cookies-next";
 import { ParsedDiff, parsePatch } from "diff";
+import { LogOut } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { MouseEventHandler, useEffect, useState } from "react";
 
 export default function Home() {
 
@@ -27,58 +30,59 @@ export default function Home() {
   const [currentAspect, setCurrentAspect] = useState<Aspects>(aspects[index])
   const [diffs, setDiffs] = useState<ParsedDiff[]>([])
 
-  const handleSendClick = () => {
-    // const response = await SendResults({ duel_id, options })
-    console.log("Função chamada <handleSendClick>")
-    setIndex(0)
-    setOptions([])
-    setIsModalOpen(false)
-    router.push("/arena")
-  }
+  const handleSendClick = async () => {
+    const response = await SendResults({ duel_id, options })
+    // setIndex(0)
+    // setOptions([])
+    // setIsModalOpen(false)
 
-  const handleCancelClick = () => {
-    setIndex(0)
-    setOptions([])
-    setIsModalOpen(false)
-    router.push("/arena")
   }
 
   useEffect(() => {
     const getOneDuel = async () => {
 
-      const duelReceived = await GetDuel();
+      const response = await GetDuel();
 
-      console.log("Duel received: ", duelReceived)
-      console.log("Diff received: ", duelReceived.diff_content)
+      const duelReceived = response.data
 
-      const incommingDiffs = parsePatch(duelReceived.diff_content)
+      if (response.status === 204) {
+        router.push("/finished")
+      } else {
+        console.log("Duel received: ", duelReceived)
+        console.log("Diff received: ", duelReceived.diff_content)
 
-      setDuelId(duelReceived.duel_id)
-      setDiffs(incommingDiffs)
-      setMessageA(duelReceived.commit_message_a)
-      setMessageB(duelReceived.commit_message_b)
+        const incommingDiffs = parsePatch(duelReceived.diff_content)
+
+        setDuelId(duelReceived.duel_id)
+        setDiffs(incommingDiffs)
+        setMessageA(duelReceived.commit_message_a)
+        setMessageB(duelReceived.commit_message_b)
+      }
+
     }
     getOneDuel()
   }, [])
 
   const handlerClick = (option: string, initialTimer: number) => {
 
-    const endTimer = new Date().getTime();
-    const totalTimer = (endTimer - initialTimer) / (1000)
-    console.log("Choice: ", option)
-    console.log("timer: ", totalTimer)
-    console.log("aspect: ", currentAspect.title)
-    console.log("index: ", index)
+    if (options.length < 5) {
+      const endTimer = new Date().getTime();
+      const totalTimer = (endTimer - initialTimer) / (1000)
+      console.log("Choice: ", option)
+      console.log("timer: ", totalTimer)
+      console.log("aspect: ", currentAspect.title)
+      console.log("index: ", index)
 
-    const currentOption: Options = {
-      aspect: currentAspect.title,
-      choise_time: totalTimer,
-      chosen_option: option
+      const currentOption: Options = {
+        aspect: currentAspect.title,
+        choice_time: totalTimer,
+        chosen_option: option
+      }
+
+      options.push(currentOption)
+      setOptions(options)
+      console.log(options)
     }
-
-    options.push(currentOption)
-    setOptions(options)
-    console.log(options)
 
     const newIndex = index + 1
     if (index < 4) {
@@ -90,14 +94,13 @@ export default function Home() {
     }
   }
 
-  function showOptions(option: Options) {
+  type SimpleButtonProps = {
+    message: string
+    handle: MouseEventHandler
+  }
+  function SimpleButton({ message, handle }: SimpleButtonProps) {
     return (
-      <div className="w-[24rem] h-[2rem] flex items-center text-textColor border border-borderItems p-2">
-        <div className="flex w-[30rem] h-[1rem]">
-          <p className="w-[25rem]">Aspect: {option.aspect}</p>
-          <p className="w-[25rem]">Your Choise: {option.chosen_option}</p>
-        </div>
-      </div>
+      <a href="" className="bg-[#3A506B] w-[10rem] h-[2.5rem] rounded-xl flex justify-center items-center text-textColor" onClick={handle} >{message}</a>
     )
   }
 
@@ -148,23 +151,29 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-        <DialogContent className="bg-itemsBackgroud border-2 border-borderItems">
-          <DialogHeader>
-            <DialogTitle className="text-3xl">Confirm:</DialogTitle>
-            <DialogDescription className="text-md text-textColor">
-              {options.map(showOptions)}
-              <div className="mt-5 flex justify-around text-2xl">
-                <button className="bg-[#3A506B] w-[10rem] h-[2.5rem] rounded-xl" onClick={handleSendClick}>Confirm</button>
-                <button className="bg-[#3A506B] w-[10rem] h-[2.5rem] rounded-xl" onClick={handleCancelClick}>Cancel</button>
-              </div>
+        <Dialog open={isModalOpen} >
+          <DialogContent className="bg-itemsBackgroud border-2 border-borderItems text-md text-textColor">
+            <DialogHeader>
+              <DialogTitle className="text-3xl">Confirm:</DialogTitle>
+            </DialogHeader>
+            <DialogDescription>
             </DialogDescription>
-          </DialogHeader>
-        </DialogContent>
-      </Dialog>
+            <ShowOptions options={options} />
+            <div className="mt-5 flex justify-around text-2xl">
+              <SimpleButton message="Confirm" handle={handleSendClick} />
+              <SimpleButton message="Cancel" handle={() => { }} />
+            </div>
+          </DialogContent>
+        </Dialog>
       </div>
     );
   }
+
+  function Logout() {
+    deleteCookie("Authorization")
+    router.push("/")
+  }
+
   return (
     <div>
       <Base>
@@ -186,6 +195,12 @@ export default function Home() {
         <footer className="mt-14 w-[20rem] h-[2rem] text-textColor flex items-end justify-around">
           <a href="https://gesaduece.com.br/">GESAD</a>
           <a href="">Paper</a>
+
+          <button onClick={Logout} className="flex flex-col justify-center items-center">
+            <LogOut size={30} />
+            <p>Logout</p>
+          </button>
+
         </footer>
       </Base>
     </div>

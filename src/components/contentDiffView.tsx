@@ -12,13 +12,13 @@ export function ContentDiffView({ diff }: ContentViewerProps) {
     function createView(newCode: boolean) {
 
         return (
-            <div className='w-1/2 h-full text-textColor flex flex-col'>
+            <div className='w-[40rem] h-full text-textColor flex flex-col'>
                 <h1 className='text-2xl ml-4 '>
                     {newCode ? 'New' : 'Old'}
                 </h1>
-                <pre className="whitespace-pre-wrap h-screen ">
-                    {diff.hunks.map((hunk: { lines: any[]; newStart: any; }, hunkIndex: React.Key | null | undefined) => (
-                        <div key={hunkIndex}>
+                <div className="whitespace-pre-wrap h-screen">
+                    {diff.hunks.map((hunk: { lines: any[]; newStart: any; }, index) => (
+                        <div key={index}>
                             {hunk.lines.map((line, lineIndex) => {
                                 const lineNumber = hunk.newStart + lineIndex;
                                 if (newCode ? line.startsWith('-') : line.startsWith('+')) {
@@ -32,14 +32,14 @@ export function ContentDiffView({ diff }: ContentViewerProps) {
                                     <div
                                         key={lineIndex}
                                         className={`flex space-x-4 ${lineColor}`}>
-                                        <p className="text-gray-500 w-10 text-right">{lineNumber}</p>
+                                        <p className="text-gray-500 text-right">{lineNumber}</p>
                                         <p>{line}</p>
                                     </div>
                                 );
                             })}
                         </div>
                     ))}
-                </pre>
+                </div>
             </div>
         );
     }
