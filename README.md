@@ -17,7 +17,7 @@ Make sure you have the following tools installed on your machine:
 
 ### Step 1: Clone the repository
 ```bash
-git clone https://github.com/Fer-Matheus/Commitinder.git
+git clone https://github.com/your-username/Commitinder.git
 cd Commitinder
 ```
 
