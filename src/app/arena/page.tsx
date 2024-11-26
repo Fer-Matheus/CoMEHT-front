@@ -184,14 +184,14 @@ export default function Home() {
     const file = diff.newFileName ?? diff.oldFileName;
     const filenName = file?.split('/')[file.split('/').length - 1]
     return (
-      <option value={index}>{filenName}</option>
+      <option key={index} value={index}>{filenName}</option>
     )
   }
 
   return (
     <div>
       <Base>
-        <NavBar link="https://github.com/Fer-Matheus/Commitinder" />
+        <NavBar/>
         <div className="mt-2">
           <label
             htmlFor="currentDiff"
