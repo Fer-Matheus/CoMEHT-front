@@ -13,7 +13,7 @@ import { Options } from "@/models/result";
 import { GetDuel, SendResults } from "@/services/duel";
 import { deleteCookie } from "cookies-next";
 import { ParsedDiff, parsePatch } from "diff";
-import { LogOut } from "lucide-react";
+import { CircleCheck, LogOut } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { MouseEventHandler, useEffect, useState } from "react";
 
@@ -29,6 +29,7 @@ export default function Home() {
   const [options, setOptions] = useState<Options[]>([])
   const [currentAspect, setCurrentAspect] = useState<Aspects>(aspects[index])
   const [diffs, setDiffs] = useState<ParsedDiff[]>([])
+  const [currentDiff, setCurrentDiff] = useState<ParsedDiff>(diffs[0])
 
   const handleSendClick = async () => {
     const response = await SendResults({ duel_id, options })
@@ -133,7 +134,7 @@ export default function Home() {
                   <p className="text-2xl mr-5">
                     {"A"} is more
                   </p>
-                  <OkayHand />
+                  <CircleCheck />
                 </button>
               </div>
             </div>
@@ -145,7 +146,7 @@ export default function Home() {
                   <p className="text-2xl mr-5">
                     {"B"} is more
                   </p>
-                  <OkayHand />
+                  <CircleCheck />
                 </button>
               </div>
             </div>
@@ -174,13 +175,43 @@ export default function Home() {
     router.push("/")
   }
 
+  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    e.preventDefault()
+    setCurrentDiff(diffs[Number.parseInt(e.target.value)])
+  }
+
+  function showOptions(diff: ParsedDiff, index: number) {
+    const file = diff.newFileName ?? diff.oldFileName;
+    const filenName = file?.split('/')[file.split('/').length - 1]
+    return (
+      <option value={index}>{filenName}</option>
+    )
+  }
+
   return (
     <div>
       <Base>
-        <NavBar link="https://github.com/Fer-Matheus" />
-        <DiffContainer >
-          <DiffViewer diffs={diffs} />
-        </DiffContainer>
+        <NavBar link="https://github.com/Fer-Matheus/Commitinder" />
+        <div className="mt-2">
+          <label
+            htmlFor="currentDiff"
+            className="text-xl mr-5"
+          >
+            Choose a file
+          </label>
+          <select
+            name="currentDiff"
+            id="currentDiff"
+            onChange={handleChange}
+            className="bg-itemsBackgroud text-xl border border-borderItems rounded-xl"
+          >
+            <option value="">None</option>
+            {diffs.map((diff, index) => showOptions(diff, index))}
+          </select>
+          <DiffContainer >
+            <DiffViewer currentDiff={currentDiff} />
+          </DiffContainer>
+        </div>
         <div className="mt-2 w-[80rem] h-[12rem] flex items-center">
           <CommitMessage
             title={"Commit message A"}
