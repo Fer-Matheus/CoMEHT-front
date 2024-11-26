@@ -16,6 +16,6 @@ export async function LoginUser(params: LoginRequest){
 
 export async function Register(params: LoginRequest){
     const response = await api.post("/register", params)
-    return response.status
+    return response.data.token
 }
 

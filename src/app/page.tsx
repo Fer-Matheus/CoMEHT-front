@@ -28,13 +28,21 @@ export default function Login() {
 
         router.push("/arena")
     }
-    const handlerRegisterClick = async () => {
-        const _ = await Register({ username, password })
+    const handlerRegisterClick = async (e: React.FormEvent) => {
+        e.preventDefault();
+        const authorization = await Register({ username, password })
+        if (authorization) {
+            api.defaults.headers.common["Authorization"] = `Bearer ${authorization}`
+        }
+
+        setCookie("Authorization", authorization)
+
+        router.push("/arena")
     }
 
     return (
         <Base>
-            <NavBar link="https://github.com/Fer-Matheus" />
+            <NavBar />
 
 
             <div className="w-screen h-screen flex flex-col justify-center items-center">
