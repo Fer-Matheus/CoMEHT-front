@@ -43,8 +43,6 @@ export default function Login() {
     return (
         <Base>
             <NavBar />
-
-
             <div className="w-screen h-screen flex flex-col justify-center items-center">
                 <div className="w-[30rem] h-[25rem] bg-itemsBackgroud border border-borderItems rounded-lg p-6">
                     <h2 className="text-3xl font-bold mb-6 text-center">
@@ -134,7 +132,6 @@ export default function Login() {
                             </button>
                         </form>
                     )}
-
                     <p className="mt-4 text-center">
                         {isLogin ? "Não possui uma conta?" : "Já possui uma conta?"}{" "}
                         <button
@@ -146,8 +143,6 @@ export default function Login() {
                     </p>
                 </div>
             </div>
-
-
         </Base>
     );
 }

@@ -49,8 +49,6 @@ export default function Home() {
       if (response.status === 204) {
         router.push("/finished")
       } else {
-        console.log("Duel received: ", duelReceived)
-        console.log("Diff received: ", duelReceived.diff_content)
 
         const incommingDiffs = parsePatch(duelReceived.diff_content)
 
@@ -69,11 +67,6 @@ export default function Home() {
     if (options.length < 5) {
       const endTimer = new Date().getTime();
       const totalTimer = (endTimer - initialTimer) / (1000)
-      console.log("Choice: ", option)
-      console.log("timer: ", totalTimer)
-      console.log("aspect: ", currentAspect.title)
-      console.log("index: ", index)
-
       const currentOption: Options = {
         aspect: currentAspect.title,
         choice_time: totalTimer,
@@ -114,7 +107,7 @@ export default function Home() {
         <div className="mt-5 w-[40rem] h-[5rem] flex items-center justify-center">
           <div className="w-1/2 h-[5rem] flex items-center justify-start">
             <p className="text-auto text-textColor">
-              Which of the two messages do you think best fits with the aspect next to it?:
+              Which of the two messages do you think best fits with the aspect:
             </p>
           </div>
           <div className="w-1/2 h-[5rem] flex">
