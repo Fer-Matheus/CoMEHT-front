@@ -44,9 +44,9 @@ export default function Login() {
         <Base>
             <NavBar />
             <div className="w-screen h-screen flex flex-col justify-center items-center">
-                <div className="w-[30rem] h-[25rem] bg-itemsBackgroud border border-borderItems rounded-lg p-6">
+                <div className="w-[30rem] h-[27rem] bg-itemsBackgroud border border-borderItems rounded-lg p-6">
                     <h2 className="text-3xl font-bold mb-6 text-center">
-                        {isLogin ? "Login" : "Registro"}
+                        {isLogin ? "Login" : "Register"}
                     </h2>
 
                     {isLogin ? (
@@ -62,7 +62,8 @@ export default function Login() {
                                     type="text"
                                     id="username"
                                     className="w-[20rem] px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-black"
-                                    placeholder="Digite seu username"
+                                    placeholder="your username"
+                                    defaultValue={`Matheus`}
                                     value={username}
                                     onChange={(e) => setUsername(e.target.value)}
                                 />
@@ -78,7 +79,7 @@ export default function Login() {
                                     type="password"
                                     id="password"
                                     className="w-[20rem] px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-black"
-                                    placeholder="Digite sua senha"
+                                    placeholder="your password"
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                 />
@@ -103,7 +104,8 @@ export default function Login() {
                                     type="text"
                                     id="username"
                                     className="w-[20rem] px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-black"
-                                    placeholder="Digite seu username"
+                                    placeholder="your username"
+                                    defaultValue={`Matheus`}
                                     value={username}
                                     onChange={(e) => setUsername(e.target.value)}
                                 />
@@ -119,7 +121,7 @@ export default function Login() {
                                     type="password"
                                     id="password"
                                     className="w-[20rem] px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-black"
-                                    placeholder="Digite sua senha"
+                                    placeholder="your password"
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                 />
@@ -133,12 +135,21 @@ export default function Login() {
                         </form>
                     )}
                     <p className="mt-4 text-center">
-                        {isLogin ? "Não possui uma conta?" : "Já possui uma conta?"}{" "}
+                        {isLogin ? "Don't you have an accout?" : "Do you already have an accout?"}{" "}
                         <button
                             onClick={toggleForm}
                             className="text-blue-500 hover:underline"
                         >
-                            {isLogin ? "Registre-se" : "Faça login"}
+                            {isLogin ? "Register" : "Login"}
+                        </button>
+                    </p>
+                    <p className="mt-4 text-center">
+                        Are you an administrator? {" "}
+                        <button
+                            onClick={()=>router.push("/results")}
+                            className="text-blue-500 hover:underline"
+                        >
+                            Download the results
                         </button>
                     </p>
                 </div>
