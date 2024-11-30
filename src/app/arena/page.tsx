@@ -135,6 +135,7 @@ export default function Home() {
               <div className="w-[15em] h-[3rem] flex text-textColor text-xl">
                 <button className="flex items-center justify-center w-[80%] h-full rounded-md border-2 border-borderItems bg-itemsBackgroud transition-transform hover:scale-110 focus:outline-none"
                   onClick={() => handlerClick("B", initialTimer)}
+                  
                 >
                   <p className="text-2xl mr-5">
                     {"B"} is more
