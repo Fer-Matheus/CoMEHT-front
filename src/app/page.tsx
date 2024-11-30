@@ -63,7 +63,6 @@ export default function Login() {
                                     id="username"
                                     className="w-[20rem] px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-black"
                                     placeholder="your username"
-                                    defaultValue={`Matheus`}
                                     value={username}
                                     onChange={(e) => setUsername(e.target.value)}
                                 />
@@ -105,7 +104,6 @@ export default function Login() {
                                     id="username"
                                     className="w-[20rem] px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-black"
                                     placeholder="your username"
-                                    defaultValue={`Matheus`}
                                     value={username}
                                     onChange={(e) => setUsername(e.target.value)}
                                 />

@@ -19,3 +19,9 @@ export async function Register(params: LoginRequest){
     return response.data.token
 }
 
+export async function DownloadResults(params: LoginRequest){
+    const response = await api.put("/results", params, {
+        responseType: "blob"
+    })
+    return response
+}
