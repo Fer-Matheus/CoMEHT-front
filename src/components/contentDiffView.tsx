@@ -12,7 +12,7 @@ export function ContentDiffView({ diff }: ContentViewerProps) {
     function createView(newCode: boolean) {
 
         return (
-            <div className='w-[40rem] h-full text-textColor flex flex-col'>
+            <div className={`w-[40rem] h-full text-textColor flex flex-col overflow-auto  pl-2 `}>
                 <h1 className='text-2xl ml-4 '>
                     {newCode ? 'New' : 'Old'}
                 </h1>
