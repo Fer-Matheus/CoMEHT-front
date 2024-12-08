@@ -3,9 +3,25 @@ export type Aspects = {
     description: string
 }
 export const aspects: Aspects[] = [
-    {title: "Rationality", description: "Which reflects whether the commit message provides a logical explanation for the code change (Why information) and provides the commit type information."},
-    {title: "Comprehensiveness", description: "Which reflects whether the message describes a summary of what has been changed (What information) and also covers relevant important details (i.e. whether the message fails to explain the code changes)."},
-    {title: "Conciseness", description: "Indicates whether the message conveys information succinctly, ensuring readability and quick comprehension."},
-    {title:"Expressiveness", description:"Which reflects whether the message content is grammatically correct."},
-    {title:"Your final choice", description:"Your final choice is what your will use."}
+    {
+      title: "Rationality",
+      description: "Evaluates whether the commit message provides a clear and logical explanation for the code changes, including the reasoning behind them (the 'Why') and specifying the commit type."
+    },
+    {
+      title: "Comprehensiveness",
+      description: "Assesses whether the message delivers a complete summary of the changes made (the 'What') and includes all critical details necessary to understand the modifications, avoiding omissions."
+    },
+    {
+      title: "Conciseness",
+      description: "Determines if the message communicates the necessary information in a clear and succinct manner, enabling easy and quick understanding."
+    },
+    {
+      title: "Expressiveness",
+      description: "Checks whether the commit message is well-structured, grammatically correct, and effectively conveys its intent."
+    },
+    {
+      title: "Your Final Choice",
+      description: "Represents your ultimate selection, which will be applied as the chosen commit message."
+    }
   ]
+  
