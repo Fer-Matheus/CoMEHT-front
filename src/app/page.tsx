@@ -19,6 +19,17 @@ export default function Login() {
 
     const handlerLoginClick = async (e: React.FormEvent) => {
         e.preventDefault();
+
+        if (username.length < 8) {
+            alert("The username must have a minimum of 8 characters");
+            return
+        }
+
+        if (password.length < 8) {
+            alert("The password must have a minimum of 8 characters");
+            return
+        }
+
         const authorization = await LoginUser({ username, password })
         if (authorization) {
             api.defaults.headers.common["Authorization"] = `Bearer ${authorization}`
@@ -30,6 +41,17 @@ export default function Login() {
     }
     const handlerRegisterClick = async (e: React.FormEvent) => {
         e.preventDefault();
+
+        if (username.length < 8) {
+            alert("The username must have a minimum of 8 characters");
+            return
+        }
+
+        if (password.length < 8) {
+            alert("The password must have a minimum of 8 characters");
+            return
+        }
+
         const authorization = await Register({ username, password })
         if (authorization) {
             api.defaults.headers.common["Authorization"] = `Bearer ${authorization}`
@@ -144,7 +166,7 @@ export default function Login() {
                     <p className="mt-4 text-center">
                         Are you an administrator? {" "}
                         <button
-                            onClick={()=>router.push("/results")}
+                            onClick={() => router.push("/results")}
                             className="text-blue-500 hover:underline"
                         >
                             Download the results

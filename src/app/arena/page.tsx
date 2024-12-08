@@ -32,12 +32,8 @@ export default function Home() {
   const [currentDiff, setCurrentDiff] = useState<ParsedDiff>(diffs[0])
 
   const handleSendClick = async () => {
-    const response = await SendResults({ duel_id, options })
-    // setIndex(0)
-    // setOptions([])
-    // setIsModalOpen(false)
-
-  }
+    const _ = await SendResults({ duel_id, options })
+    }
 
   useEffect(() => {
     const getOneDuel = async () => {
@@ -75,7 +71,6 @@ export default function Home() {
 
       options.push(currentOption)
       setOptions(options)
-      console.log(options)
     }
 
     const newIndex = index + 1
