@@ -155,7 +155,7 @@ export default function Login() {
                         </form>
                     )}
                     <p className="mt-4 text-center">
-                        {isLogin ? "Don't you have an accout?" : "Do you already have an accout?"}{" "}
+                        {isLogin ? "Don't you have an account?" : "Do you already have an account?"}{" "}
                         <button
                             onClick={toggleForm}
                             className="text-blue-500 hover:underline"

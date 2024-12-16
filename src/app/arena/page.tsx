@@ -33,7 +33,7 @@ export default function Home() {
 
   const handleSendClick = async () => {
     const _ = await SendResults({ duel_id, options })
-    }
+  }
 
   useEffect(() => {
     const getOneDuel = async () => {
@@ -52,6 +52,7 @@ export default function Home() {
         setDiffs(incommingDiffs)
         setMessageA(duelReceived.commit_message_a)
         setMessageB(duelReceived.commit_message_b)
+        setCurrentDiff(incommingDiffs[0])
       }
 
     }
@@ -130,7 +131,7 @@ export default function Home() {
               <div className="w-[15em] h-[3rem] flex text-textColor text-xl">
                 <button className="flex items-center justify-center w-[80%] h-full rounded-md border-2 border-borderItems bg-itemsBackgroud transition-transform hover:scale-110 focus:outline-none"
                   onClick={() => handlerClick("B", initialTimer)}
-                  
+
                 >
                   <p className="text-2xl mr-5">
                     {"B"} is more
@@ -171,32 +172,35 @@ export default function Home() {
 
   function showOptions(diff: ParsedDiff, index: number) {
     const file = diff.newFileName ?? diff.oldFileName;
-    const filenName = file?.split('/')[file.split('/').length - 1]
+    const fileName = file?.split('/')[file.split('/').length - 1]
     return (
-      <option key={index} value={index}>{filenName}</option>
+      <option key={index} value={index}>{fileName}</option>
     )
   }
 
   return (
     <div>
       <Base>
-        <NavBar/>
+        <NavBar />
         <div className="mt-2">
-          <label
-            htmlFor="currentDiff"
-            className="text-xl mr-5"
-          >
-            Choose a file
-          </label>
-          <select
-            name="currentDiff"
-            id="currentDiff"
-            onChange={handleChange}
-            className="bg-itemsBackgroud text-xl border border-borderItems rounded-xl"
-          >
-            <option value="">None</option>
-            {diffs.map((diff, index) => showOptions(diff, index))}
-          </select>
+          <div className="flex">
+            <p className="w-[10rem] text-xl">Duel ID: {duel_id}</p>
+            <label
+              htmlFor="currentDiff"
+              className="text-xl mr-5"
+            >
+              Choose a file
+            </label>
+            <select
+              name="currentDiff"
+              id="currentDiff"
+              onChange={handleChange}
+              className="bg-itemsBackgroud text-xl border border-borderItems rounded-xl"
+            >
+              <option value="">None</option>
+              {diffs.map((diff, index) => showOptions(diff, index))}
+            </select>
+          </div>
           <DiffContainer >
             <DiffViewer currentDiff={currentDiff} />
           </DiffContainer>
