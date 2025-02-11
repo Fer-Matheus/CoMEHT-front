@@ -31,7 +31,7 @@ export function MoreInfo({ description }: MoreInfoProps) {
             </DialogTrigger>
             <DialogContent className="bg-itemsBackgroud border-2 border-borderItems">
                 <DialogHeader>
-                    <DialogTitle className="text-3xl">More about:</DialogTitle>
+                    <DialogTitle className="text-3xl">More about it:</DialogTitle>
                     <DialogDescription className="text-md text-textColor">
                         {description}
                     </DialogDescription>

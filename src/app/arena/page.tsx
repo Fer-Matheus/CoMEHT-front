@@ -103,7 +103,7 @@ export default function Home() {
         <div className="mt-5 w-[40rem] h-[5rem] flex items-center justify-center">
           <div className="w-1/2 h-[5rem] flex items-center justify-start">
             <p className="text-auto text-textColor">
-              Which of the two messages do you think best fits with the aspect:
+            Which of the two proposed messages, in your opinion, is better in each aspect:
             </p>
           </div>
           <div className="w-1/2 h-[5rem] flex">
@@ -207,10 +207,10 @@ export default function Home() {
         </div>
         <div className="mt-2 w-[80rem] h-[12rem] flex items-center">
           <CommitMessage
-            title={"Commit message A"}
+            title={"Message A"}
             message={messageA} />
           <CommitMessage
-            title={"Commit message B"}
+            title={"Message B"}
             message={messageB} />
         </div>
         <div className="mt-2 w-[80rem] h-[12rem] flex items-center">
