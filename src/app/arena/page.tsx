@@ -8,6 +8,7 @@ import NavBar from "@/components/navbar";
 import { ShowOptions } from "@/components/options";
 import { Base } from "@/components/page/base";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import ProgressBar from "@/components/ui/progress";
 import { aspects, Aspects } from "@/models/aspect";
 import { Options } from "@/models/result";
 import { GetDuel, SendResults } from "@/services/duel";
@@ -184,6 +185,7 @@ export default function Home() {
         <NavBar />
         <div className="mt-2">
           <div className="flex">
+            <div className="w-1/2">
             <p className="w-[10rem] text-xl">Duel ID: {duel_id}</p>
             <label
               htmlFor="currentDiff"
@@ -200,6 +202,11 @@ export default function Home() {
               <option value="">None</option>
               {diffs.map((diff, index) => showOptions(diff, index))}
             </select>
+            </div>
+            <div className="w-1/2 flex flex-col justify-between ml-5">
+              <h1 className="text-xl mr-5">Progress:</h1>
+            <ProgressBar total={120} current={duel_id-1} />
+            </div>
           </div>
           <DiffContainer >
             <DiffViewer currentDiff={currentDiff} />
@@ -216,7 +223,7 @@ export default function Home() {
         <div className="mt-2 w-[80rem] h-[12rem] flex items-center">
           {createCarouselItem()}
         </div>
-        <footer className="mt-14 w-[20rem] h-[2rem] text-textColor flex items-end justify-around">
+        <footer className="mt-6 w-[20rem] h-[2rem] text-textColor flex items-end justify-around">
           <a href="https://gesaduece.com.br/">GESAD</a>
           <a href="">Paper</a>
 
