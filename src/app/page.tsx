@@ -30,14 +30,17 @@ export default function Login() {
             return
         }
 
-        const authorization = await LoginUser({ username, password })
-        if (authorization) {
-            api.defaults.headers.common["Authorization"] = `Bearer ${authorization}`
-        }
+        try {
+            const authorization = await LoginUser({ username, password })
+            if (authorization) {
+                api.defaults.headers.common["Authorization"] = `Bearer ${authorization}`
+            }
+            setCookie("Authorization", authorization)
 
-        setCookie("Authorization", authorization)
-
-        router.push("/arena")
+            router.push("/arena")
+        } catch (error) {
+            alert("username and/or password doesn't match")
+        }        
     }
     const handlerRegisterClick = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -52,7 +55,8 @@ export default function Login() {
             return
         }
 
-        const authorization = await Register({ username, password })
+        try {
+            const authorization = await Register({ username, password })
         if (authorization) {
             api.defaults.headers.common["Authorization"] = `Bearer ${authorization}`
         }
@@ -60,6 +64,9 @@ export default function Login() {
         setCookie("Authorization", authorization)
 
         router.push("/arena")
+        } catch (error) {
+            alert("User already registered")
+        }
     }
 
     return (
@@ -84,7 +91,7 @@ export default function Login() {
                                     type="text"
                                     id="username"
                                     className="w-[20rem] px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-black"
-                                    placeholder="your username"
+                                    placeholder="type your username"
                                     value={username}
                                     onChange={(e) => setUsername(e.target.value)}
                                 />
@@ -100,7 +107,7 @@ export default function Login() {
                                     type="password"
                                     id="password"
                                     className="w-[20rem] px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-black"
-                                    placeholder="your password"
+                                    placeholder="type your password"
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                 />
@@ -125,7 +132,7 @@ export default function Login() {
                                     type="text"
                                     id="username"
                                     className="w-[20rem] px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-black"
-                                    placeholder="your username"
+                                    placeholder="type your username"
                                     value={username}
                                     onChange={(e) => setUsername(e.target.value)}
                                 />
@@ -141,7 +148,7 @@ export default function Login() {
                                     type="password"
                                     id="password"
                                     className="w-[20rem] px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-black"
-                                    placeholder="your password"
+                                    placeholder="type your password"
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                 />
@@ -150,7 +157,7 @@ export default function Login() {
                                 type="submit"
                                 className="w-[20rem] bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600"
                             >
-                                Registrar
+                                Register
                             </button>
                         </form>
                     )}
