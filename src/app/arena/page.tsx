@@ -224,8 +224,7 @@ export default function Home() {
           {createCarouselItem()}
         </div>
         <footer className="mt-6 w-[20rem] h-[2rem] text-textColor flex items-end justify-around">
-          <a href="https://gesaduece.com.br/">GESAD</a>
-          <a href="">Paper</a>
+          <a target="_blank" href="https://gesaduece.com.br/">GESAD</a>
 
           <button onClick={Logout} className="flex flex-col justify-center items-center">
             <LogOut size={30} />

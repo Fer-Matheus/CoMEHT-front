@@ -7,7 +7,7 @@ export default function NavBar(){
           <h1 className="text-3xl ml-20">CommiTinder</h1>
           <GitGraph size={35}/>
           </a>
-          <a className="pr-10 pt-3" href="https://github.com/Fer-Matheus/Commitinder">
+          <a target="_blank" className="pr-10 pt-3" href="https://github.com/Fer-Matheus/Commitinder">
             <Github className="h-[3rem] w-[3rem] text-textColor" size={40} />
           </a>
         </div>
