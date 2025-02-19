@@ -16,8 +16,8 @@ export function Base({children}:BaseProps){
         flex-col 
         items-center 
         bg-githubBackground 
-        w-screen 
-        h-screen
+        w-screen
+        min-h-screen
         ${jetBrains.className}`}>
             {children}
         </div>
