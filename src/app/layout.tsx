@@ -14,7 +14,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Commitinder",
+  title: "CoMEHT",
 };
 
 export default function RootLayout({

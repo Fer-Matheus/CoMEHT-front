@@ -1,7 +1,7 @@
 
-# Commitinder
+# Commit Message Evaluation Helper Tool - CoMEHT
 
-Commitinder is a duel arena where you evaluate commit messages for each code change (diff). The goal is to select the commit message that best describes the change.
+CoMEHT is a duel arena where you evaluate commit messages for each code change (diff). The goal is to select the commit message that best describes the change.
 
 ## Technologies
 - **Next.js**
@@ -17,8 +17,8 @@ Make sure you have the following tools installed on your machine:
 
 ### Step 1: Clone the repository
 ```bash
-git clone https://github.com/your-username/Commitinder.git
-cd Commitinder
+git clone https://github.com/your-username/CoMEHT-front.git
+cd CoMEHT-front
 ```
 
 ### Step 2: Install dependencies
@@ -34,7 +34,7 @@ yarn dev
 ```
 
 ### Step 4: Access the application
-Open your browser and go to [http://localhost:3000](http://localhost:3000) to access Commitinder.
+Open your browser and go to [http://localhost:3000](http://localhost:3000) to access CoMEHT.
 
 ## Useful Scripts
 - `yarn dev`: Starts the development server.

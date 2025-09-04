@@ -2,13 +2,13 @@ import { GitGraph, Github } from "lucide-react";
 
 export default function NavBar(){
     return (
-        <div className="bg-itemsBackgroud w-full h-[4rem] flex items-center justify-between">
-          <a href="/" className="flex text-textColor justify-center w-[20rem]">
-          <h1 className="text-3xl ml-20">CommiTinder</h1>
-          <GitGraph size={35}/>
+        <div className="bg-itemsBackgroud w-full h-20 flex items-center justify-between px-6 shadow-md">
+          <a href="/" className="flex items-center gap-4 text-textColor">
+            <GitGraph size={35} className="hover:text-blue-500 transition-colors duration-200" />
+            <h1 className="text-2xl md:text-3xl font-bold tracking-tight">Commit Message Evaluation Helper Tool</h1>
           </a>
-          <a target="_blank" className="pr-10 pt-3" href="https://github.com/Fer-Matheus/Commitinder">
-            <Github className="h-[3rem] w-[3rem] text-textColor" size={40} />
+          <a target="_blank" className="pr-2" href="https://github.com/Fer-Matheus/CoMEHT-front">
+            <Github className="h-10 w-10 text-textColor hover:text-blue-500 transition-colors duration-200" size={40} />
           </a>
         </div>
     );
