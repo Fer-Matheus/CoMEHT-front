@@ -55,7 +55,7 @@ export default function Choise({ aspect, description }: ChoiseProps) {
                     </p>
                 </div>
                 <div className="w-1/2 h-[5rem] flex">
-                    <div className="w-[70%] m-3 ml-[1rem] rounded-md flex items-center justify-center text-white text-xl border-2 border-borderItems bg-[#3A506B]">
+                    <div className="w-[70%] m-3 ml-[1rem] rounded-md flex items-center justify-center text-highlightBoxForeground text-xl border-2 border-borderItems bg-highlightBox">
                         {aspect}
                     </div>
                     <MoreInfo description={description} />

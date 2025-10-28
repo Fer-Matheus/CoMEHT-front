@@ -94,7 +94,7 @@ export default function Home() {
     return (
       <a
         href=""
-        className="bg-[#3A506B] w-[10rem] h-[2.5rem] rounded-xl flex justify-center items-center text-textColor"
+        className="bg-primary text-primary-foreground w-[10rem] h-[2.5rem] rounded-xl flex justify-center items-center hover:bg-primary/80 transition-colors"
         onClick={handle}
       >
         {message}
@@ -115,7 +115,7 @@ export default function Home() {
             </p>
           </div>
           <div className="w-1/2 h-[5rem] flex">
-            <div className="w-[70%] m-3 ml-[1rem] rounded-md flex items-center justify-center text-white text-xl border-2 border-borderItems bg-[#3A506B]">
+            <div className="w-[70%] m-3 ml-[1rem] rounded-md flex items-center justify-center text-highlightBoxForeground text-xl border-2 border-borderItems bg-highlightBox">
               {currentAspect.title}
             </div>
             <MoreInfo description={currentAspect.description} />
@@ -185,21 +185,21 @@ export default function Home() {
         <div className="mt-2">
           <div className="flex">
             <div className="w-1/2">
-              <p className="w-1/2 text-xl">Number of files changed: {diffs.length}</p>
-              <label htmlFor="currentDiff" className="text-xl mr-5">
+              <p className="w-1/2 text-xl text-textColor">Number of files changed: {diffs.length}</p>
+              <label htmlFor="currentDiff" className="text-xl mr-5 text-textColor">
                 Choose a file
               </label>
               <select
                 name="currentDiff"
                 id="currentDiff"
                 onChange={handleChange}
-                className="bg-itemsBackgroud text-xl border border-borderItems rounded-xl w-1/2"
+                className="bg-itemsBackgroud text-textColor text-xl border border-borderItems rounded-xl w-1/2"
               >
                 {diffs.map((diff, index) => showOptions(diff, index))}
               </select>
             </div>
             <div className="w-1/2 flex flex-col justify-between ml-5">
-              <h1 className="text-xl mr-5">Progress:</h1>
+              <h1 className="text-xl mr-5 text-textColor">Progress:</h1>
               <ProgressBar total={120} current={duel_id - 1} />
             </div>
           </div>
@@ -215,7 +215,7 @@ export default function Home() {
           {createCarouselItem()}
         </div>
         <footer className="mt-6 w-[20rem] h-[2rem] text-textColor flex items-end justify-around">
-          <a target="_blank" href="https://gesaduece.com.br/">GESAD</a>
+          {/* <a target="_blank" href="https://gesaduece.com.br/">GESAD</a> */}
 
           <button
             onClick={Logout}

@@ -53,6 +53,14 @@ body {
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
+    
+    /* Custom theme colors - Light mode */
+    --github-background: 0 0% 98%;
+    --items-background: 0 0% 100%;
+    --border-items: 214 32% 91%;
+    --text-color: 222 47% 11%;
+    --highlight-box: 0 0% 85%; /* Gray highlight for light mode */
+    --highlight-box-foreground: 222 47% 11%; /* Black text */
   }
   .dark {
     --background: 240 10% 3.9%;
@@ -79,6 +87,14 @@ body {
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
+    
+    /* Custom theme colors - Dark mode */
+    --github-background: 222 47% 5%;
+    --items-background: 215 28% 11%;
+    --border-items: 215 16% 17%;
+    --text-color: 0 0% 79%;
+    --highlight-box: 217 33% 27%; /* Dark blue highlight for dark mode */
+    --highlight-box-foreground: 0 0% 100%; /* White text */
   }
 }
 

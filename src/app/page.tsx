@@ -74,7 +74,7 @@ export default function Login() {
             <NavBar />
             <div className="w-screen h-screen flex flex-col justify-center items-center">
                 <div className="w-[30rem] h-[27rem] bg-itemsBackgroud border border-borderItems rounded-lg p-6">
-                    <h2 className="text-3xl font-bold mb-6 text-center">
+                    <h2 className="text-3xl font-bold mb-6 text-center text-textColor">
                         {isLogin ? "Login" : "Register"}
                     </h2>
 
@@ -83,14 +83,14 @@ export default function Login() {
                             <div className="mb-4">
                                 <label
                                     htmlFor="username"
-                                    className="block text-white font-medium mb-2"
+                                    className="block text-textColor font-medium mb-2"
                                 >
                                     Username
                                 </label>
                                 <input
                                     type="text"
                                     id="username"
-                                    className="w-[20rem] px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-black"
+                                    className="w-[20rem] px-4 py-2 border border-borderItems bg-background text-textColor rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
                                     placeholder="type your username"
                                     value={username}
                                     onChange={(e) => setUsername(e.target.value)}
@@ -99,14 +99,14 @@ export default function Login() {
                             <div className="mb-4">
                                 <label
                                     htmlFor="password"
-                                    className="block text-white font-medium mb-2"
+                                    className="block text-textColor font-medium mb-2"
                                 >
                                     Password
                                 </label>
                                 <input
                                     type="password"
                                     id="password"
-                                    className="w-[20rem] px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-black"
+                                    className="w-[20rem] px-4 py-2 border border-borderItems bg-background text-textColor rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
                                     placeholder="type your password"
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
@@ -114,7 +114,7 @@ export default function Login() {
                             </div>
                             <button
                                 type="submit"
-                                className="w-[20rem] bg-gray-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600"
+                                className="w-[20rem] bg-primary text-primary-foreground py-2 px-4 rounded-lg hover:bg-primary/80 transition-colors"
                             >
                                 Login
                             </button>
@@ -124,14 +124,14 @@ export default function Login() {
                             <div className="mb-4">
                                 <label
                                     htmlFor="username"
-                                    className="block text-white font-medium mb-2"
+                                    className="block text-textColor font-medium mb-2"
                                 >
                                     Username
                                 </label>
                                 <input
                                     type="text"
                                     id="username"
-                                    className="w-[20rem] px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-black"
+                                    className="w-[20rem] px-4 py-2 border border-borderItems bg-background text-textColor rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
                                     placeholder="type your username"
                                     value={username}
                                     onChange={(e) => setUsername(e.target.value)}
@@ -140,14 +140,14 @@ export default function Login() {
                             <div className="mb-4">
                                 <label
                                     htmlFor="password"
-                                    className="block text-white font-medium mb-2"
+                                    className="block text-textColor font-medium mb-2"
                                 >
                                     Password
                                 </label>
                                 <input
                                     type="password"
                                     id="password"
-                                    className="w-[20rem] px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-black"
+                                    className="w-[20rem] px-4 py-2 border border-borderItems bg-background text-textColor rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
                                     placeholder="type your password"
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
@@ -155,13 +155,13 @@ export default function Login() {
                             </div>
                             <button
                                 type="submit"
-                                className="w-[20rem] bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600"
+                                className="w-[20rem] bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 transition-colors"
                             >
                                 Register
                             </button>
                         </form>
                     )}
-                    <p className="mt-4 text-center">
+                    <p className="mt-4 text-center text-textColor">
                         {isLogin ? "Don't you have an account?" : "Do you already have an account?"}{" "}
                         <button
                             onClick={toggleForm}
@@ -170,7 +170,7 @@ export default function Login() {
                             {isLogin ? "Register" : "Login"}
                         </button>
                     </p>
-                    <p className="mt-4 text-center">
+                    <p className="mt-4 text-center text-textColor">
                         Are you an administrator? {" "}
                         <button
                             onClick={() => router.push("/results")}

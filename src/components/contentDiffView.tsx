@@ -32,7 +32,7 @@ export function ContentDiffView({ diff }: ContentViewerProps) {
                                     <div
                                         key={lineIndex}
                                         className={`flex space-x-4 ${lineColor}`}>
-                                        <p className="text-gray-500 text-right">{lineNumber}</p>
+                                        <p className="text-muted-foreground text-right">{lineNumber}</p>
                                         <p>{line}</p>
                                     </div>
                                 );
